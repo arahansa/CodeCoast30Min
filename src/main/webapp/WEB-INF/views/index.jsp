@@ -1,10 +1,2 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title> Happy WOrld </title>
-</head>
-<body>
-hello world ? cargo test testase
-</body>
-</html>
+hello world ? cargo test testase 잘 되는 것인가?

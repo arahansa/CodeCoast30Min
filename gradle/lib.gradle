@@ -23,7 +23,8 @@ ext{
             fileUpload: '1.3.1',
             commonsIo: '2.4',
             jackson: '2.7.3',
-            commonslang: '3.4'
+            commonslang: '3.4',
+            springsocial :'1.1.4.RELEASE'
     ]
 }
 
@@ -35,6 +36,21 @@ dependencies {
     compile("org.springframework:spring-context-support:${versions.spring}")
     compile("com.navercorp.lucy:lucy-xss:${versions.lucy}")
     compile("org.sitemesh:sitemesh:${versions.sitemesh}")
+
+    // spring security
+    compile "org.springframework.security:spring-security-core:${versions.springsecurity}"
+    compile "org.springframework.security:spring-security-config:${versions.springsecurity}"
+    compile "org.springframework.security:spring-security-taglibs:${versions.springsecurity}"
+    compile "org.springframework.security:spring-security-web:${versions.springsecurity}"
+    testCompile "org.springframework.security:spring-security-test:${versions.springsecurity}"
+
+    // social
+    compile("org.springframework.social:spring-social-config:${versions.springsocial}")
+    compile("org.springframework.social:spring-social-core:${versions.springsocial}")
+    compile("org.springframework.social:spring-social-security:${versions.springsocial}")
+    compile("org.springframework.social:spring-social-web:${versions.springsocial}")
+    compile("org.springframework.social:spring-social-facebook:2.0.3.RELEASE")
+    compile("org.springframework.social:spring-social-twitter:1.1.2.RELEASE")
 
 
     // persistence
