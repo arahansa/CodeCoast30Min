@@ -4,9 +4,11 @@ import com.example.user.domain.Role;
 import com.example.user.domain.SocialMediaService;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.social.security.SocialUser;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -33,7 +35,7 @@ public class ExampleUserDetails  extends SocialUser {
     public static class ExampleUserDetailsBuilder{
         private String password;
         private String username;
-        private Set<GrantedAuthority> authorities;
+        private Set<GrantedAuthority> authorities= new HashSet<>();;
         public ExampleUserDetailsBuilder password(String password){
             if (password == null) {
                 password = "SocialUser";
@@ -43,6 +45,14 @@ public class ExampleUserDetails  extends SocialUser {
         }
         public ExampleUserDetailsBuilder username(String username) {
             this.username = username;
+            return this;
+        }
+        public ExampleUserDetailsBuilder role(Role role) {
+            this.role = role;
+
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.toString());
+            this.authorities.add(authority);
+
             return this;
         }
 

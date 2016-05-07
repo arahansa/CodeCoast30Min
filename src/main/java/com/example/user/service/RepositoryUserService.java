@@ -1,6 +1,7 @@
 package com.example.user.service;
 
 
+import com.example.user.domain.Role;
 import com.example.user.domain.User;
 import com.example.user.dto.RegistrationForm;
 import com.example.user.exception.DuplicateEmailException;
@@ -48,6 +49,7 @@ public class RepositoryUserService implements UserService {
                 .email(userAccountData.getEmail())
                 .firstName(userAccountData.getFirstName())
                 .lastName(userAccountData.getLastName())
+                .role(Role.ROLE_USER)
                 .password(encodedPassword);
 
         if (userAccountData.isSocialSignIn()) {
