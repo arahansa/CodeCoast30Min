@@ -21,12 +21,13 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {
-        "com.example.repository"
+        "com.example.user.repository"
 })
 @EnableTransactionManagement
 public class PersistenceContext {
     private static final String[] PROPERTY_PACKAGES_TO_SCAN = {
-            "com.example.domain"
+            "com.example.common.domain",
+            "com.example.user.domain"
     };
 
     protected static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";

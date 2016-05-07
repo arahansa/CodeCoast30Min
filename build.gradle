@@ -12,7 +12,6 @@ buildscript {
 }
 war.archiveName='ROOTBack.war'
 
-
 apply from :'./gradle/cargo.gradle'
 apply from :'./gradle/lib.gradle'
 apply from :'./gradle/profile.gradle'

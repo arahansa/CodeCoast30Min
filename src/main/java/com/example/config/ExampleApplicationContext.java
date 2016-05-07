@@ -8,12 +8,13 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 /**
  * Created by arahansa on 2016-04-02.
  */
-
 @Configuration
 @ComponentScan(basePackages = {
-        "com.example.service"
+        "com.example.common.service",
+        "com.example.security.service",
+        "com.example.user.service"
 })
-@Import({WebMvcConfig.class , PersistenceContext.class})
+@Import({WebMvcConfig.class, PersistenceContext.class, SecurityContext.class, SocialContext.class})
 @PropertySource("classpath:application.properties")
 public class ExampleApplicationContext {
 
@@ -29,7 +30,7 @@ public class ExampleApplicationContext {
 
     // TODO PropertySourcesPlaceholderConfigurer 은 static 으로 잡아주세요..
     @Bean
-    public PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {
+    public static PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 

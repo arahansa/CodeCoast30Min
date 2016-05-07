@@ -1,8 +1,8 @@
 package com.example.config;
 
-import com.example.repository.UserRepository;
-import com.example.service.RepositoryUserDetailService;
-import com.example.service.security.SimpleSocialUserDetailService;
+import com.example.user.repository.UserRepository;
+import com.example.security.service.RepositoryUserDetailService;
+import com.example.security.service.SimpleSocialUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

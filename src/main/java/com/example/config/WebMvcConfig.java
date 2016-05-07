@@ -1,11 +1,15 @@
 package com.example.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,7 +26,9 @@ import java.util.List;
 
 @Configuration
 @ComponentScan(basePackages = {
-        "com.example.controller",
+        "com.example.common.controller",
+        "com.example.security.controller",
+        "com.example.user.controller"
 })
 @EnableWebMvc
 public class WebMvcConfig  extends WebMvcConfigurerAdapter {
@@ -68,6 +74,19 @@ public class WebMvcConfig  extends WebMvcConfigurerAdapter {
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
         messageConverter.setObjectMapper(objectMapper());
         return messageConverter;
+    }
+
+
+    @Autowired
+    private UsersConnectionRepository usersConnectionRepository;
+    @Autowired
+    private ConnectionFactoryLocator connectionFactoryLocator;
+
+    @Bean
+    public ProviderSignInUtils providerSignInUtils(){
+        ProviderSignInUtils providerSignInUtils =
+                new ProviderSignInUtils(connectionFactoryLocator, usersConnectionRepository);
+        return providerSignInUtils;
     }
 
 
